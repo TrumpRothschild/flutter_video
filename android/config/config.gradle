@@ -1,0 +1,45 @@
+ext.androidConfig = [compileSdkVersion: 33,
+                     minSdkVersion    : 21,
+                     targetSdkVersion : 33,
+                     applicationId    : "com.uni",
+                     // 直播：bball  视频：cfox
+                     channel           : "cfox"
+
+]
+
+ext.signConfig = [keyAlias    : 'apollo',
+                  keyPassword : '123456',
+                  keypath     : './../config/apollo.jks',
+                  keyStorePass: '123456',
+                  // app文件名时间格式
+                  releaseTime : new Date().format("yyyyMMdd", TimeZone.getDefault()),
+                  //多渠道配置 维度
+                  dimensions  : "cfox",]
+
+// 打包环境
+ext.evn = [
+        //pro环境
+        vCode     : 1,
+        vName     : "1.0.0",
+        appName   : "彩狐视频",
+
+        //dev环境
+        vCodeDev  : 1,
+        vNameDev  : "1.0.0",
+        appNameDev: "彩狐视频(D)",
+        suffixDev : ".dev",
+
+        //uat环境
+        vCodeUat  : 2,
+        vNameUat  : "1.0.2",
+        appNameUat: "彩狐视频(U)",
+        suffixUat : ".uat",
+
+        //pre环境
+        vCodePre  : 2,
+        vNamePre  : "1.0.0",
+        appNamePre: "彩狐视频(P)",
+        suffixPre : ".pre",
+]
+
+

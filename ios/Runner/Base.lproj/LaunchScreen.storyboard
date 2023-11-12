@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" colorMatched="YES" initialViewController="diA-p8-U4j">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="ZsF-Sl-9gJ">
+            <objects>
+                <viewController id="diA-p8-U4j" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8Ra-OD-nDo">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="tB9-2e-6zk">
+                                <rect key="frame" x="0.0" y="832" width="393" height="0.0"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="qdimage.png" translatesAutoresizingMaskIntoConstraints="NO" id="Tzu-Pm-Trl">
+                                <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                            </imageView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="piJ-04-x1e"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="Tzu-Pm-Trl" firstAttribute="leading" secondItem="piJ-04-x1e" secondAttribute="leading" id="9JG-So-RjA"/>
+                            <constraint firstAttribute="bottom" secondItem="Tzu-Pm-Trl" secondAttribute="bottom" id="Hdy-9l-f3l"/>
+                            <constraint firstAttribute="bottom" secondItem="tB9-2e-6zk" secondAttribute="bottom" constant="20" id="MZD-Ti-uAP"/>
+                            <constraint firstItem="Tzu-Pm-Trl" firstAttribute="trailing" secondItem="piJ-04-x1e" secondAttribute="trailing" id="Sjb-br-eKm"/>
+                            <constraint firstItem="Tzu-Pm-Trl" firstAttribute="top" secondItem="8Ra-OD-nDo" secondAttribute="top" id="UlY-ge-OF5"/>
+                            <constraint firstItem="piJ-04-x1e" firstAttribute="centerX" secondItem="tB9-2e-6zk" secondAttribute="centerX" id="Ylg-44-aCt"/>
+                            <constraint firstItem="tB9-2e-6zk" firstAttribute="leading" secondItem="piJ-04-x1e" secondAttribute="leading" constant="20" symbolic="YES" id="a8g-6k-L41"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Z8l-ht-oB3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="52.173913043478265" y="375"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="qdimage.png" width="828" height="1792"/>
+    </resources>
+</document>

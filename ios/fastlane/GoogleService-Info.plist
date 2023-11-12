@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>318409587000-6h600l7d4m8oijql2rkkan1ve40k8ehn.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.318409587000-6h600l7d4m8oijql2rkkan1ve40k8ehn</string>
+	<key>API_KEY</key>
+	<string>AIzaSyAL9nPShCUyMDyqP_ks0nctySVLz75ltH8</string>
+	<key>GCM_SENDER_ID</key>
+	<string>318409587000</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.apollo.live</string>
+	<key>PROJECT_ID</key>
+	<string>apollo-ddf55</string>
+	<key>STORAGE_BUCKET</key>
+	<string>apollo-ddf55.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:318409587000:ios:312dca99239689b8ba69cd</string>
+</dict>
+</plist>

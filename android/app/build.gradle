@@ -1,0 +1,153 @@
+def localProperties = new Properties()
+def localPropertiesFile = rootProject.file('local.properties')
+if (localPropertiesFile.exists()) {
+    localPropertiesFile.withReader('UTF-8') { reader ->
+        localProperties.load(reader)
+    }
+}
+
+def flutterRoot = localProperties.getProperty('flutter.sdk')
+if (flutterRoot == null) {
+    //throw new GradleException("Flutter SDK not found. Define location with flutter.sdk in the local.properties file.")
+}
+
+
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
+
+// 签名
+def androidConfig = rootProject.ext.androidConfig
+// 签名
+def signConfig = rootProject.ext.signConfig
+// 环境
+def evn = rootProject.ext.evn
+// 渠道
+def channel = androidConfig.channel
+// 包名
+def curApplicationId = (androidConfig.applicationId + channel)
+
+android {
+    compileSdkVersion androidConfig.compileSdkVersion
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
+    }
+
+    kotlinOptions {
+        jvmTarget = '11'
+    }
+
+    sourceSets {
+        main.java.srcDirs += 'src/main/kotlin'
+    }
+
+    defaultConfig {
+        applicationId curApplicationId
+        minSdkVersion 21
+        multiDexEnabled true
+        targetSdkVersion androidConfig.targetSdkVersion
+        //ndk {
+        //选择要添加的对应 cpu 类型的 .so 库。
+        // abiFilters 'armeabi-v7a'
+        // 还可以添加 'x86', 'x86_64', 'mips', 'mips64'
+        //}
+    }
+
+    signingConfigs {
+        release {
+            keyAlias signConfig.keyAlias
+            keyPassword signConfig.keyPassword
+            storeFile file(signConfig.keypath)
+            storePassword signConfig.keyStorePass
+        }
+    }
+
+    buildTypes {
+        debug {
+            signingConfig signingConfigs.release
+            minifyEnabled false
+        }
+
+        release {
+            signingConfig signingConfigs.release
+            minifyEnabled true
+            shrinkResources true
+            zipAlignEnabled true
+        }
+
+        //批量修改生成的apk文件名
+        def versionName = null
+        def flavorName = null
+        android.applicationVariants.all { variant ->
+            variant.outputs.all { output ->
+                def flavors = variant.productFlavors
+                for (int i = 0; i < flavors.size(); i++) {
+                    def flavor = flavors[i]
+                    versionName = "v${flavor.versionName}"
+                    flavorName = "${flavor.name}"
+                    outputFileName = "${channel}_${versionName}_${signConfig.releaseTime}_${flavorName}.apk"
+                }
+            }
+        }
+    }
+
+    //多渠道、多环境的不同配置
+    flavorDimensions signConfig.dimensions
+    productFlavors {
+        //线上
+        pro {
+            dimension signConfig.dimensions
+            versionCode evn.vCode
+            versionName evn.vName
+
+            manifestPlaceholders = [app_name: evn.appName]
+        }
+        //开发
+        dev {
+            dimension signConfig.dimensions
+            versionCode evn.vCodeDev
+            versionName evn.vNameDev
+
+            applicationIdSuffix evn.suffixDev//包名后缀
+            versionNameSuffix evn.suffixDev//版本后缀
+
+            manifestPlaceholders = [app_name: evn.appNameDev]
+        }
+        //测试
+        uat {
+            dimension signConfig.dimensions
+            versionCode evn.vCodeUat
+            versionName evn.vNameUat
+
+            applicationIdSuffix evn.suffixUat//包名后缀
+            versionNameSuffix evn.suffixUat//版本后缀
+
+            manifestPlaceholders = [app_name: evn.appNameUat]
+        }
+        //预发布
+        pre {
+            dimension signConfig.dimensions
+            versionCode evn.vCodePre
+            versionName evn.vNamePre
+
+            applicationIdSuffix evn.suffixPre//包名后缀
+            versionNameSuffix evn.suffixPre//版本后缀
+
+            manifestPlaceholders = [app_name: evn.appNamePre]
+        }
+    }
+
+}
+
+flutter {
+    source '../..'
+}
+
+dependencies {
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation 'com.github.bumptech.glide:glide:4.12.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.12.0'
+    implementation 'com.squareup.okhttp3:okhttp:3.14.+'
+}
